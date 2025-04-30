@@ -25,7 +25,6 @@ export default class LinkedList {
     }
 
     size() {
-        // starting from the head, follow the pointers to the tail and increment the count each time
         let count = 0;
         if (this.head === null) return "This list is empty! Disgraceful!";
         else {
@@ -36,6 +35,10 @@ export default class LinkedList {
             }
         }
         return count;
+    }
+
+    getHead() {
+        return (this.head);
     }
 
     static listName = "I am a linked list abstraction";
