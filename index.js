@@ -1,11 +1,11 @@
 import LinkedList from "./linkedList.js";
 console.log(LinkedList.listName);
 const list = new LinkedList();
-console.log(list.size()); // "This list is empty! Disgraceful!"
+console.log(list.contains(1)); // should complain about trying to find something in an empty list
 list.append(1);
-console.log(list.size()); // Should return 1
 list.prepend(2);
 list.append(3);
-console.log(list.getHead()); // should return node 2
-console.log(list.getTail()); // should return node 3 (nextNode = null);
-console.log(list.size()); // Should return 3
+list.append(4);
+list.append(5);
+console.log(list.contains(10)); // nope
+console.log(list.contains(4)); // yep
