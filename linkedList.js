@@ -41,5 +41,9 @@ export default class LinkedList {
         return (this.head);
     }
 
+    getTail() {
+        return (this.tail);
+    }
+
     static listName = "I am a linked list abstraction";
 }
