@@ -5,6 +5,7 @@ export default class LinkedList {
         this.tail = null;
     }
 
+    // adds a new node containing value to the end of the list
     append(value) {
         const newNode = new Node(value);
         if (this.head === null) {
@@ -15,6 +16,7 @@ export default class LinkedList {
         this.tail = newNode;
     }
 
+    // adds a new node containing value to the start of the list
     prepend(value) {
         const newNode = new Node(value);
         newNode.nextNode = this.head;
@@ -24,6 +26,7 @@ export default class LinkedList {
         }
     }
 
+    // returns the total number of nodes in the list
     size() {
         let count = 0;
         if (this.head === null) return "This list is empty! Disgraceful!";
@@ -37,14 +40,17 @@ export default class LinkedList {
         return count;
     }
 
+    // returns the first node in the list
     getHead() {
         return (this.head);
     }
 
+    // returns the last node in the list
     getTail() {
         return (this.tail);
     }
 
+    // returns the node at the given index
     at(index) {
         let currentIndex = 0;
         if (this.head === null) return "Since this list is empty, there's nothing to find!";
@@ -60,6 +66,7 @@ export default class LinkedList {
         }
     }
 
+    // removes the last element from the list
     pop() {
         if (this.head === null) return "I can't remove anything from an empty list!";
         if (this.head === this.tail) {
@@ -81,8 +88,9 @@ export default class LinkedList {
         }
     }
 
+    // returns true if the passed in value is in the list and otherwise returns false (or complains about the list being empty)
     contains(value) {
-        if(this.head === null) return "Obviously this is going to be false. The list is empty!";
+        if (this.head === null) return "Obviously this is going to be false. The list is empty!";
         else {
             let currentNode = this.head;
             while (currentNode !== null) {
@@ -95,5 +103,22 @@ export default class LinkedList {
         }
     }
 
+    // returns the index of the node containing the value, or null if it is not found
+    find(value) {
+        if (this.head === null) return "I can't find something in an empty list!";
+        else {
+            let currentNode = this.head;
+            let currentIndex = 0;
+            while (currentNode !== null) {
+                if (currentNode.value === value) {
+                    return currentIndex;
+                }
+                currentIndex++
+                currentNode = currentNode.nextNode;
+            }
+            return null;
+        }
+    }
+    
     static listName = "I am a linked list abstraction";
 }
