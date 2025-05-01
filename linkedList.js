@@ -187,5 +187,6 @@ export default class LinkedList {
             return this.toString();
         }
     }
+    
     static listName = "I am a linked list abstraction";
 }

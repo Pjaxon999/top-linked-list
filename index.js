@@ -1,12 +1,11 @@
 import LinkedList from "./linkedList.js";
 console.log(LinkedList.listName);
 const list = new LinkedList();
-list.append(1);
-list.append(2);
-list.append(3);
-list.append(4);
-list.append(5);
-console.log(`list before removals ${list.toString()}`);
-console.log(list.removeAt(2));
-console.log(list.removeAt(3));
-console.log(list.removeAt(0));
+
+list.append("dog");
+list.append("cat");
+list.append("parrot");
+list.append("hamster");
+list.append("snake");
+list.append("turtle");
+console.log(list.toString());
