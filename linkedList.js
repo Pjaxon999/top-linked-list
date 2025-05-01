@@ -132,5 +132,60 @@ export default class LinkedList {
         return string += ` null `;
     }
 
+    // inserts a new node with the provided value at the given index.
+    // if empty do nothing unless it's index of 0
+    insertAt(value, index) {
+        if (index < 0) return "Please use positive indices only. It's not an array after all!"
+        if (this.head === null && index !== 0) return "I can only insert something into an empty list at index of 0!";
+        if (this.head === null && index === 0) { 
+            this.append(value);
+            return this.toString(); 
+        }
+        if (index === 0) {
+            this.prepend(value);
+            return this.toString(); 
+        }
+        if (index > (this.size() - 1)) return "Your requested index value is too large!";
+        let targetNode = this.at(index);
+        let nodePreviousToTarget = this.at(index - 1);
+        let newNode = new Node(value, targetNode);
+        nodePreviousToTarget.nextNode = newNode;
+        return this.toString();
+    }
+
+    // removes the node at the given index
+    removeAt(index) {
+        // deal with nonsense
+        if (index < 0) return "Please give me a positive index only! Stop trying to be clever :P";
+        if (index > (this.size() - 1)) return "Your requested index value is too large!";
+        if (this.head === null) return "The list is empty, and I cannot remove something from nothing!";
+        if (this.head === this.tail) {
+            this.head = null;
+            this.tail = null;
+            return "The list only had one item, which has now been removed, enjoy your empty list!";
+        }
+        if (index === 0) {
+            this.head = this.head.nextNode;
+            if (this.head === null) {
+                this.tail = null;
+            }
+            return this.toString();
+        }
+
+        // now for the rest of the cases I want to grab the relevant nodes
+        const targetNode = this.at(index);
+        const previousNode = this.at(index - 1);
+
+        // if the target node is the tail, the previous node is now the tail and must point to null
+        // otherwise all that needs to happen is that the previous node's nextNode value is updated accordingly
+        if (targetNode.nextNode === null) {
+            previousNode.nextNode = null;
+            this.tail = previousNode;
+            return this.toString();
+        } else {
+            previousNode.nextNode = targetNode.nextNode;
+            return this.toString();
+        }
+    }
     static listName = "I am a linked list abstraction";
 }
